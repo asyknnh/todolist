@@ -55,7 +55,7 @@ php artisan serve
 **TL;DR command list**
 ```
 git clone https://github.com/asyknnh/todolist.git
-cd laravel-realworld-example-app
+cd todolist
 composer install
 cp .env.example .env
 php artisan key:generate
