@@ -59,7 +59,6 @@ cd todolist
 composer install
 cp .env.example .env
 php artisan key:generate
-php artisan jwt:generate 
 ```
 **Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
 ```
