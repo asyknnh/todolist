@@ -7,6 +7,66 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Getting started
+
+## Installation
+
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.x/installation#installation)
+
+1. Clone the repository
+```
+git clone https://github.com/asyknnh/todolist.git
+```
+2. Switch to the repo folder
+```
+cd todolist
+```
+3. Install all the dependencies using composer
+```
+composer install
+```
+4. Copy the example env file and make the required configuration changes in the .env file
+```
+cp .env.example .env
+```
+5. Generate a new application key
+```
+php artisan key:generate
+```
+6. Run the database migrations (**Set the database connection in .env before migrating**)
+```
+php artisan migrate
+```
+7. Run the factory
+```
+php artisan tinker
+```
+```
+User::factory()->count(10)->create()
+ToDo::factory()->count(3)->create()
+Task::factory()->count(30)->create()
+```
+8. Start the local development server
+```
+php artisan serve
+```
+9. You can now access the server at http://localhost:8000
+
+**TL;DR command list**
+```
+git clone https://github.com/asyknnh/todolist.git
+cd laravel-realworld-example-app
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan jwt:generate 
+```
+**Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
+```
+php artisan migrate
+php artisan serve
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
