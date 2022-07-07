@@ -34,6 +34,12 @@
                                 <td>{{ $todo->list_name }}</td>
                                 <td>{{ $todo->created_at }}</td>
                                 <td>
+                                    <a href="#" class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target-id="{{$todo->id}}" data-list_name="{{$todo->list_name}}" data-href="{{ route('todo:update', $todo->id )}}" data-target="#editListModal">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="{{ route('todo:delete', $todo->id) }}" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -59,6 +65,34 @@
                     <div class="form-group">
                     <label for="list_name" class="col-form-label">List Name:</label>
                     <input type="text" class="form-control" id="list_name" name="list_name" value="Untitled List">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editListModal" tabindex="-1" role="dialog" aria-labelledby="editListModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editListModalLabel">Edit List</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form id="editTodoForm" action="" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" id="todo_id" name="todo_id">
+                <div class="modal-body">                
+                    <div class="form-group">
+                    <label for="edit_name" class="col-form-label">List Name:</label>
+                    <input type="text" class="form-control" id="edit_name" name="edit_name">
                     </div>
                 </div>
                 <div class="modal-footer">

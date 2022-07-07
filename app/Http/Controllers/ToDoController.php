@@ -100,7 +100,8 @@ class ToDoController extends Controller
     {
         if (request()->is('todos/*/edit'))
         {
-            return redirect()->route('todo:index');
+            $todo->update(['list_name' => $request->input('edit_name')]);
+            return redirect()->route('todo:create');
         }
 
         if (request()->is('todos/complete/*'))
@@ -138,15 +139,21 @@ class ToDoController extends Controller
         }
     }
 
-    public function delete(Task $task)
+    public function delete(ToDo $todo,Task $task)
     {
-        $todo = $task->to_do_id;
-        $task->delete();
+        if(!empty($todo))
+        {
+            $todo->delete();
 
-        return redirect()->route('todo:show', $todo)
-                    ->with([
-                        'alert-type' => 'alert-danger',
-                        'alert' => 'Your to do task has been deleted'
-                    ]);
+            return redirect()->route('todo:create');
+        }
+
+        if(!empty($task))
+        {
+            $todo = $task->to_do_id;
+            $task->delete();
+
+            return redirect()->route('todo:show', $todo);
+        }
     }
 }

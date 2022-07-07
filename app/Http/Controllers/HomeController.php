@@ -24,10 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = auth()->id();
-        $todos = ToDo::where('user_id','=',$user)->get();
-
-        // dd($todos);
-        return view('layouts.dashboard')->with(compact('todos'));
+        return redirect()->route('todo:myday','1');
     }
 }

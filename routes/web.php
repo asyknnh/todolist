@@ -27,13 +27,14 @@ Route::post('/todos/create', [App\Http\Controllers\ToDoController::class, 'store
 Route::post('/todos/create/{todo}', [App\Http\Controllers\ToDoController::class, 'store'])->name('todo:task');
 
 Route::get('/todos/{todo}', [App\Http\Controllers\ToDoController::class, 'show'])->name('todo:show');
-// Route::post('/todos/{todo}/edit', [App\Http\Controllers\ToDoController::class, 'update'])->name('todo:update');
 Route::get('/todos/{todo}/myday', [App\Http\Controllers\ToDoController::class, 'show'])->name('todo:myday');
 Route::get('/todos/{todo}/important', [App\Http\Controllers\ToDoController::class, 'show'])->name('todo:important');
 Route::get('/todos/{todo}/planned', [App\Http\Controllers\ToDoController::class, 'show'])->name('todo:planned');
 
+Route::post('/todos/{todo}/edit', [App\Http\Controllers\ToDoController::class, 'update'])->name('todo:update');
 Route::get('/todos/edit/{task}', [App\Http\Controllers\ToDoController::class, 'edit'])->name('task:edit');
 Route::post('/todos/edit/{task}', [App\Http\Controllers\ToDoController::class, 'update'])->name('task:update');
 Route::post('/todos/complete/{task}', [App\Http\Controllers\ToDoController::class, 'update'])->name('task:complete');
 
+Route::get('/todos/{todo}/delete', [App\Http\Controllers\ToDoController::class, 'delete'])->name('todo:delete');
 Route::get('/todos/{task}/delete', [App\Http\Controllers\ToDoController::class, 'delete'])->name('task:delete');

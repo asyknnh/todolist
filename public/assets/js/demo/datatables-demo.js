@@ -47,6 +47,18 @@ $(document).ready(function() {
         $(this).prev(".card-header").find(".fa")
             .removeClass("fa-angle-up").addClass("fa-angle-down");
     });
+
+    $("#editListModal").on("show.bs.modal", function (e) {
+      var id = $(e.relatedTarget).data('target-id');
+      var list_name = $(e.relatedTarget).data('list_name');
+      var action = $(e.relatedTarget).data('href');
+      // alert(id);
+      // alert(list_name);
+      // alert(action);
+      $('#edit_name').val(list_name);
+      $('#todo_id').val(id);
+      $('#editTodoForm').attr('action', action);
+  });
 });
 
 $('input[type="checkbox"]').click(function(){
